@@ -9,19 +9,15 @@ async function bootstrap() {
   const app = await NestFactory.createMicroservice<MicroserviceOptions>(
     AppModule,
     {
-      transport: Transport.TCP,
+      transport: Transport.NATS,
       options: {
-        //host: '0.0.0.0',
-        port: envs.port,
+        servers: envs.natsServers
       },
     }
   )
 
   const logger = new Logger('Server-Info')
 
-  //app.enableCors()
-
-  //app.setGlobalPrefix('api/v1');
 
   app.useGlobalPipes(
     new ValidationPipe({

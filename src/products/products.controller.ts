@@ -4,7 +4,7 @@ import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { PaginationDto } from 'src/common';
 import { MessagePattern, Payload } from '@nestjs/microservices';
-import { isDataURI } from 'class-validator';
+
 
 @Controller('products')
 export class ProductsController {
