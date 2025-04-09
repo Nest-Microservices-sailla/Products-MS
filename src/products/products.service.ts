@@ -31,13 +31,13 @@ export class ProductsService extends PrismaClient implements OnModuleInit {
 
     const { page = 1, limit = 10 } = paginationDto
 
-    const totalPages = await this.product.count({
+    const totalProducts = await this.product.count({
       where: {
         available: true
       }
     })
 
-    const lastPage = Math.ceil(totalPages / limit)
+    const lastPage = Math.ceil(totalProducts / limit)
 
     return {
       data: await this.product.findMany({
@@ -52,7 +52,7 @@ export class ProductsService extends PrismaClient implements OnModuleInit {
       }),
       metadata: {
         page,
-        totalPages,
+        totalProducts,
         lastPage
       }
     }
